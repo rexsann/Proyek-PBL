@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
 include 'koneksi.php';
 
@@ -43,39 +42,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/register.css">
 
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #2b1055, #7597de);
-      color: white;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
 
-    .card-glass {
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.2);
-      backdrop-filter: blur(25px);
-      border-radius: 25px;
-      padding: 40px;
-      width: 400px;
-      box-shadow: 0 0 25px rgba(0,230,255,0.2);
-    }
-
-    .btn-custom {
-      background: linear-gradient(135deg, #00c6ff, #0072ff);
-      color: white;
-      border: none;
-      font-weight: 600;
-    }
-
-    .btn-custom:hover {
-      background: linear-gradient(135deg, #0072ff, #00c6ff);
-    }
-  </style>
 </head>
 
 <body>
@@ -120,6 +89,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 </body>
 </html>
-=======
-
->>>>>>> d6dbd605786cdeba592a1c053109f6795e15f3fa
