@@ -61,6 +61,10 @@ $nim      = $_SESSION['nim'];
                     <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
                 </ul>
+                <form class="d-flex me-3">
+                    <input class="form-control rounded-pill" style="background-color:rgba(255,255,255,0.8)"
+                        type="search" placeholder="Cari...">
+                </form>
 
                 <!-- Profil Dropdown -->
                 <div class="dropdown">
@@ -208,7 +212,7 @@ $nim      = $_SESSION['nim'];
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script/logout.js"></script>
-    
+
 
     <?php if (isset($_SESSION['login_success'])) : ?>
         <script>
@@ -224,7 +228,7 @@ $nim      = $_SESSION['nim'];
         unset($_SESSION['login_success']);
     endif;
     ?>
-    
+
 </body>
 
 </html>

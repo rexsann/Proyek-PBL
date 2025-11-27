@@ -43,7 +43,7 @@ session_start();
             <button type="submit" class="btn btn-custom w-100">Masuk</button>
         </form>
         <div class="mt-2 justify-content-between m">
-            <a href="lupapw.php" class="text-info me-5">Lupa Password?</a>
+            <a href="forgot_password.php" class="text-info me-5">Lupa Password?</a>
             <a href="register.php" class="text-info ms-5">Daftar di sini</a>
         </div>
     </div>
