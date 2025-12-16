@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "config/koneksi.php";
+include "./config/koneksi.php";
 
 $user_id = $_SESSION['reset_user_id'];
 $otp_input = $_POST['otp'];
