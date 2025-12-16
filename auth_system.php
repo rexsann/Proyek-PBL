@@ -5,42 +5,46 @@ session_start();
 $nim = $_POST['nim'];
 $password = $_POST['password'];
 
-$stmt = $conn->prepare("SELECT nim, pw, jurusan, id, telepon, nama, role FROM users WHERE nim = ?");
-$stmt->bind_param("s", $nim);
-$stmt->execute();
-$stmt->store_result();
+// Query sama seperti gaya kamu sebelumnya
+$data = mysqli_query($conn, "SELECT * FROM users WHERE nim='$nim'");
 
-if ($stmt->num_rows === 1) {
+if (mysqli_num_rows($data) > 0) {
 
-    $stmt->bind_result($db_nim, $db_pw, $db_jurusan, $db_id, $db_telepon, $db_nama, $db_role);
-    $stmt->fetch();
+    $row = mysqli_fetch_array($data);
 
-    if ($password === $db_pw && $nim === $db_nim) {
+    // Cek password (karena database kamu pakai password biasa)
+    if ($password == $row['pw']) {
 
-        $_SESSION['nim']      = $db_nim;
-        $_SESSION['nama']     = $db_nama;
-        $_SESSION['user_id']  = $db_id;
-        $_SESSION['jurusan']  = $db_jurusan;
-        $_SESSION['telepon']  = $db_telepon;
-        $_SESSION['role']     = $db_role;
+        // Set session
+        $_SESSION['nim']      = $row['nim'];
+        $_SESSION['nama']     = $row['nama'];
+        $_SESSION['user_id']  = $row['id'];
+        $_SESSION['jurusan']  = $row['jurusan'];
+        $_SESSION['telepon']  = $row['telepon'];
+        $_SESSION['role']     = $row['role'];
 
-        $_SESSION['login_success'] = "Selamat Datang " . $_SESSION['nama'] . "!";
+        $_SESSION['login_success'] = "Selamat Datang " . $row['nama'] . "!";
 
-        // Arahkan berdasarkan role
-        if ($db_role === 'dosen') {
-            header("Location: dosen_home.php"); 
+        // Redirect berdasarkan role
+        if ($row['role'] == 'admin') {
+            header("Location: admin/admin_dashboard.php"); // ubah sesuai lokasi halaman admin kamu
+            exit();
         } else {
             header("Location: home.php");
+            exit();
         }
-        exit();
 
     } else {
+        // Password salah
         $_SESSION['login_error'] = "NIM atau Password salah.";
         header("Location: login.php");
         exit();
     }
-}
 
-$stmt->close();
-$conn->close();
+} else {
+    // Tidak ada user
+    $_SESSION['login_error'] = "NIM atau Password salah.";
+    header("Location: login.php");
+    exit();
+}
 ?>
