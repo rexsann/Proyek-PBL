@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "config/koneksi.php";
+include "./config/koneksi.php";
 
 $telepon = $_POST['telepon'];
 
@@ -26,7 +26,7 @@ $expired = date("Y-m-d H:i:s", strtotime("+5 minutes"));
 mysqli_query($conn, "UPDATE users SET otp_code='$otp', otp_expired='$expired' WHERE id=".$user['id']);
 
 // Kirim OTP via Fonnte
-$token = "fqRGo6TVUUvHJtiHX3j8";
+$token = "v3PNvwshkfvy3tEmtoHq";
 
 $data = [
     'target' => $telepon,
