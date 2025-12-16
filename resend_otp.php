@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "config/koneksi.php";
+include "../config/koneksi.php";
 
 // Pastikan user sudah punya session OTP
 if (!isset($_SESSION['reset_user_id'])) {
