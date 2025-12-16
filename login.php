@@ -44,7 +44,7 @@ session_start();
         </form>
         <div class="mt-2 justify-content-between m">
             <a href="forgot_password.php" class="text-info me-5">Lupa Password?</a>
-            <a href="register.php" class="text-info ms-5">Daftar di sini</a>
+            <a href="register.php" class="text-info ms-5">Daftar</a>
         </div>
     </div>
 
@@ -81,7 +81,18 @@ session_start();
         }
     </script>
 
+    <?php if (isset($_SESSION['logout_success'])): ?>
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Logout Berhasil',
+                text: '<?= $_SESSION['logout_success']; ?>',
+                showConfirmButton: false,
+                timer: 1500
+            });
+        </script>
+        <?php unset($_SESSION['logout_success']); ?>
+    <?php endif; ?>
 
 </body>
-
 </html>
