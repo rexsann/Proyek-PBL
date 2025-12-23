@@ -1,0 +1,157 @@
+/* CSS sama persis seperti versi HTML sebelumnya */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #2b1055, #7597de);
+      color: white;
+      overflow-x: hidden;
+    }
+
+    .background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 40%), radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 40%);
+      filter: blur(40px);
+      z-index: 0;
+    }
+
+    .navbar {
+      background: rgba(255, 255, 255, 0.1) !important;
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .navbar-brand,
+    .nav-link,
+    .dropdown-item {
+      color: #fff !important;
+      font-weight: 500;
+    }
+
+    .nav-link:hover,
+    .dropdown-item:hover {
+      color: #00e6ff !important;
+    }
+
+    .navbar .dropdown-menu {
+      background: linear-gradient(135deg, rgba(43, 16, 85, 0.95), rgba(117, 151, 222, 0.95)) !important;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(8px);
+    }
+
+    .navbar .dropdown-menu a {
+      color: #fff !important;
+      font-weight: 500;
+      transition: 0.3s;
+      padding: 10px 20px;
+      border-radius: 8px;
+    }
+
+    .navbar .dropdown-menu a:hover {
+      background: rgba(0, 230, 255, 0.2);
+      color: #00e6ff !important;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 120px 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-weight: 700;
+      text-shadow: 0 0 15px rgba(0, 230, 255, 0.5);
+    }
+
+    .hero p {
+      max-width: 700px;
+      margin: 15px auto;
+      color: #dbe8ff;
+    }
+
+    .hero-divider {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      height: 3px;
+      border-radius: 50px;
+      background: linear-gradient(90deg, rgba(0, 198, 255, 0) 0%, rgba(0, 198, 255, 0.8) 50%, rgba(0, 198, 255, 0) 100%);
+      box-shadow: 0 0 15px rgba(0, 198, 255, 0.6);
+      animation: pulseGlow 3s infinite ease-in-out;
+    }
+
+    @keyframes pulseGlow {
+
+      0%,
+      100% {
+        box-shadow: 0 0 10px rgba(0, 198, 255, 0.4);
+        opacity: 0.8;
+      }
+
+      50% {
+        box-shadow: 0 0 25px rgba(0, 198, 255, 0.9);
+        opacity: 1;
+      }
+    }
+
+    .btn-upload {
+      background: #00e6ff;
+      color: #1a1a1a;
+      border-radius: 50px;
+      padding: 12px 30px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      box-shadow: 0 5px 15px rgba(0, 230, 255, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    .btn-upload:hover {
+      background: #00ffff;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0, 230, 255, 0.6);
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: white;
+      transition: 0.3s;
+      border-radius: 20px;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 15px rgba(0, 230, 255, 0.4);
+    }
+
+    .card a {
+      color: #00e6ff;
+      text-decoration: none;
+    }
+
+    .card a:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+
+    footer {
+      background: rgba(0, 0, 0, 0.4);
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 20px 0;
+      text-align: center;
+      color: #dbe8ff;
+      backdrop-filter: blur(15px);
+    }
+
+    .search-input {
+      width: 260px;
+      max-width: 40vw;
+    }
