@@ -11,10 +11,8 @@ $jurusan  = $isLogin ? $_SESSION["jurusan"] : null;
 $role     = $isLogin ? $_SESSION["role"] : null;
 ?>
 
-
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,10 +27,23 @@ $role     = $isLogin ? $_SESSION["role"] : null;
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+
     body {
       font-family: 'Poppins', sans-serif;
       background: linear-gradient(135deg, #2b1055, #7597de);
       color: white;
+
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .main-content {
+      flex: 1; /* mengambil sisa tinggi agar footer tetap di bawah */
     }
 
     .navbar {
@@ -40,9 +51,6 @@ $role     = $isLogin ? $_SESSION["role"] : null;
       backdrop-filter: blur(20px);
       border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     }
-    .main-content {
-  flex: 1;
-}
 
     .navbar-brand,
     .nav-link,
@@ -77,20 +85,20 @@ $role     = $isLogin ? $_SESSION["role"] : null;
       color: #00e6ff !important;
     }
 
-   footer {
+    .contact-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(20px);
+      border-radius: 20px;
+      padding: 30px;
+    }
+
+    footer {
       background: rgba(0, 0, 0, 0.4);
       border-top: 1px solid rgba(255, 255, 255, 0.2);
       padding: 20px 0;
       text-align: center;
       color: #dbe8ff;
       backdrop-filter: blur(15px);
-    }
-
-    .contact-card {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(20px);
-      border-radius: 20px;
-      padding: 30px;
     }
   </style>
 </head>
@@ -131,88 +139,78 @@ $role     = $isLogin ? $_SESSION["role"] : null;
 
         <!-- Profil / Login -->
         <?php if (isset($_SESSION['user_id'])): ?>
-
-          <!-- Dropdown Profil -->
           <div class="dropdown">
             <button class="btn btn-outline-light rounded-circle p-0 border-0" type="button" data-bs-toggle="dropdown">
               <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" width="40" height="40" class="rounded-circle">
             </button>
-
             <ul class="dropdown-menu dropdown-menu-end text-center p-3" style="min-width: 220px;">
               <li class="mb-2">
                 <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" width="60" height="60" class="rounded-circle border border-light">
               </li>
-
               <li><strong class="text-white"><?= $nama ?></strong></li>
               <li><small class="text-light"><?= $jurusan ?></small></li>
               <hr class="dropdown-divider border-light">
-
               <li><a class="dropdown-item text-white" href="profil.php">👤 Profil Saya</a></li>
-
               <?php if ($role === 'dosen'): ?>
                 <li><a class="dropdown-item text-white" href="riwayat.php">📁 Riwayat Penilaian</a></li>
               <?php else: ?>
                 <li><a class="dropdown-item text-white" href="hasil.php">📁 My Portofolio</a></li>
               <?php endif; ?>
-
               <li><a class="dropdown-item text-white" href="logout.php">🚪 Logout</a></li>
             </ul>
           </div>
-
         <?php else: ?>
-
-          <!-- Tombol Login (user belum login) -->
           <a href="login.php" class="btn btn-light">Login</a>
-
         <?php endif; ?>
       </div>
     </div>
   </nav>
 
-  <!-- CONTACT FORM -->
+  <!-- MAIN CONTENT -->
   <main class="main-content">
-  <section class="contact-section py-5">
-    <div class="container">
-      <div class="row align-items-center g-4">
-        <div class="col-lg-5">
-          <h3 class="fw-bold mb-3">Hubungi Kami</h3>
-          <p>Kirimkan pesan Anda melalui formulir berikut:</p>
-          <ul class="list-unstyled mt-3">
-            <li><i class="bi bi-geo-alt-fill text-info me-2"></i>Politeknik Negeri Batam</li>
-            <li><i class="bi bi-envelope-fill text-info me-2"></i>portofoliopbl@polibatam.ac.id</li>
-            <li><i class="bi bi-telephone-fill text-info me-2"></i>+62 812 3456 7890</li>
-          </ul>
-        </div>
-        <div class="col-lg-6">
-          <div class="contact-card">
-            <form id="contactForm" method="POST" action="send_massage.php">
-              <div class="mb-3">
-                <label class="form-label">Nama Lengkap</label>
-                <input type="text" class="form-control" name="nama" required>
-              </div>
-              <div class="mb-3">
-                <label class="form-label">Email</label>
-                <input type="email" class="form-control" name="email" required>
-              </div>
-              <div class="mb-3">
-                <label class="form-label">Pesan</label>
-                <textarea class="form-control" name="pesan" rows="4" required></textarea>
-              </div>
-              <button type="submit" class="btn btn-primary w-100">Kirim Pesan</button>
-            </form>
+    <section class="contact-section py-5">
+      <div class="container">
+        <div class="row align-items-center g-4">
+          <div class="col-lg-5">
+            <h3 class="fw-bold mb-3">Hubungi Kami</h3>
+            <p>Kirimkan pesan Anda melalui formulir berikut:</p>
+            <ul class="list-unstyled mt-3">
+              <li><i class="bi bi-geo-alt-fill text-info me-2"></i>Politeknik Negeri Batam</li>
+              <li><i class="bi bi-envelope-fill text-info me-2"></i>portofoliopbl@polibatam.ac.id</li>
+              <li><i class="bi bi-telephone-fill text-info me-2"></i>+62 812 3456 7890</li>
+            </ul>
+          </div>
+          <div class="col-lg-6">
+            <div class="contact-card">
+              <form id="contactForm" method="POST" action="send_massage.php">
+                <div class="mb-3">
+                  <label class="form-label">Nama Lengkap</label>
+                  <input type="text" class="form-control" name="nama" required>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Email</label>
+                  <input type="email" class="form-control" name="email" required>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Pesan</label>
+                  <textarea class="form-control" name="pesan" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Kirim Pesan</button>
+              </form>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
   </main>
 
-  <footer class="text-center">
-    <p>© 2025 Portofolio PBL | Polibatam</p>
+  <!-- FOOTER -->
+  <footer>
+    <p class="mb-0 text-light">© 2025 Portofolio PBL | Polibatam | All Rights Reserved</p>
   </footer>
 
+  <!-- SCRIPTS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  
   <script>
     const form = document.getElementById('contactForm');
     form.addEventListener('submit', function(e) {
@@ -237,6 +235,6 @@ $role     = $isLogin ? $_SESSION["role"] : null;
         });
     });
   </script>
-</body>
 
+</body>
 </html>
