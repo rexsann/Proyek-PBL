@@ -1,140 +1,143 @@
 body {
-            margin: 0;
-            padding: 0;
-            font-family: "Poppins", sans-serif;
-            background: linear-gradient(135deg, #2b1055, #7597de);
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-        }
-
-        .card-glass {
-            background: rgba(255, 255, 255, 0.12);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border-radius: 25px;
-            padding: 40px;
-            width: 420px;
-            color: white;
-            text-align: center;
-            box-shadow: 0 0 25px rgba(0, 230, 255, 0.2);
-        }
-
-        .form-control {
-            background: rgba(255, 255, 255, 0.2) !important;
-            border: none !important;
-            color: white !important;
-            border-radius: 20px !important;
-            padding: 12px 15px;
-        }
-
-        .form-control::placeholder {
-            color: rgba(255, 255, 255, 0.7) !important;
-        }
-
-        .btn-custom {
-            background: linear-gradient(135deg, #00c6ff, #0072ff);
-            color: white;
-            border: none;
-            border-radius: 20px;
-            padding: 10px;
-            font-weight: 600;
-        }
-
-        .btn-custom:hover {
-            background: linear-gradient(135deg, #0072ff, #00c6ff);
-        }
-
-        /* ALERT KACA */
-        .modal-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.35);
-            backdrop-filter: blur(3px);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            animation: fadeIn 0.3s ease;
-            z-index: 9999;
-            /* ADAKAN INI */
-        }
-
-        .modal-box {
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            padding: 30px 40px;
-            width: 380px;
-            border-radius: 20px;
-            text-align: center;
-            color: white;
-            backdrop-filter: blur(25px);
-            box-shadow: 0 0 25px rgba(0, 230, 255, 0.2);
-            animation: popIn 0.3s ease;
-            z-index: 10000;
-            /* ADAKAN INI */
-        }
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(135deg, #2b1055, #7597de);
+    min-height: 100vh;
+    /* GANTI height jadi min-height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    /* BIARKAN Y SCROLL */
+}
 
 
-        .modal-box h4 {
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
+.card-glass {
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border-radius: 25px;
+    padding: 40px;
+    width: 420px;
+    color: white;
+    text-align: center;
+    box-shadow: 0 0 25px rgba(0, 230, 255, 0.2);
+}
 
-        .modal-box button {
-            margin-top: 15px;
-            background: #00c6ff;
-            border: none;
-            padding: 8px 25px;
-            border-radius: 15px;
-            color: white;
-            font-weight: bold;
-        }
+.form-control {
+    background: rgba(255, 255, 255, 0.2) !important;
+    border: none !important;
+    color: white !important;
+    border-radius: 20px !important;
+    padding: 12px 15px;
+}
 
-        .modal-box.success {
-            border: 1px solid #00eaff;
-            box-shadow: 0 0 30px rgba(0, 255, 255, 0.4);
-        }
+.form-control::placeholder {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
 
-        .toggle-eye {
-            position: absolute;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            cursor: pointer;
-            font-size: 18px;
-            color: rgba(255, 255, 255, 0.8);
-            user-select: none;
-        }
+.btn-custom {
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px;
+    font-weight: 600;
+}
 
-        .toggle-eye:hover {
-            color: white;
-        }
+.btn-custom:hover {
+    background: linear-gradient(135deg, #0072ff, #00c6ff);
+}
+
+/* ALERT KACA */
+.modal-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(3px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease;
+    z-index: 9999;
+    /* ADAKAN INI */
+}
+
+.modal-box {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    padding: 30px 40px;
+    width: 380px;
+    border-radius: 20px;
+    text-align: center;
+    color: white;
+    backdrop-filter: blur(25px);
+    box-shadow: 0 0 25px rgba(0, 230, 255, 0.2);
+    animation: popIn 0.3s ease;
+    z-index: 10000;
+    /* ADAKAN INI */
+}
 
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
+.modal-box h4 {
+    font-weight: 700;
+    margin-bottom: 10px;
+}
 
-            to {
-                opacity: 1;
-            }
-        }
+.modal-box button {
+    margin-top: 15px;
+    background: #00c6ff;
+    border: none;
+    padding: 8px 25px;
+    border-radius: 15px;
+    color: white;
+    font-weight: bold;
+}
 
-        @keyframes popIn {
-            from {
-                transform: scale(0.8);
-                opacity: 0;
-            }
+.modal-box.success {
+    border: 1px solid #00eaff;
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.4);
+}
 
-            to {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
+.toggle-eye {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.8);
+    user-select: none;
+}
+
+.toggle-eye:hover {
+    color: white;
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes popIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
