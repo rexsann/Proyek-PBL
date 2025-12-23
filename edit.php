@@ -2,17 +2,13 @@
 session_start();
 include './config/koneksi.php';
 
-// =========================
 // Proteksi halaman
-// =========================
 if (!isset($_SESSION['user_id'])) {
   echo "<script>alert('⚠️ Silakan login terlebih dahulu!'); window.location.href='login.php';</script>";
   exit;
 }
 
-// =========================
 // Ambil ID
-// =========================
 if (!isset($_GET['id'])) {
   echo "<script>alert('ID portofolio tidak ditemukan!'); window.location.href='hasil.php';</script>";
   exit;
@@ -20,9 +16,7 @@ if (!isset($_GET['id'])) {
 
 $id = intval($_GET['id']);
 
-// =========================
 // AMBIL DATA LAMA (NO PREPARE)
-// =========================
 $query = "SELECT * FROM portfolios WHERE id='$id'";
 $result = mysqli_query($conn, $query);
 $data = mysqli_fetch_assoc($result);
@@ -32,9 +26,7 @@ if (!$data) {
   exit;
 }
 
-// =========================
 // PROSES UPDATE
-// =========================
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   // Escape input (wajib kalo tanpa prepare)
@@ -44,9 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $repository = mysqli_real_escape_string($conn, $_POST['repository'] ?? '');
   $youtube    = mysqli_real_escape_string($conn, $_POST['youtube'] ?? '');
 
-  // ======================
   // FILE UTAMA
-  // ======================
   $fileUtamaName = $data['file'];
 
   if (!empty($_FILES['fileUtama']['name'])) {
@@ -59,9 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     move_uploaded_file($_FILES['fileUtama']['tmp_name'], $targetDir . $fileUtamaName);
   }
 
-  // ======================
   // POSTER
-  // ======================
   $posterName = $data['poster'];
 
   if (!empty($_FILES['poster']['name'])) {
@@ -74,9 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     move_uploaded_file($_FILES['poster']['tmp_name'], $targetDir . $posterName);
   }
 
-  // ======================
   // GALERI
-  // ======================
   if (!empty($_FILES['gallery']['name'][0])) {
 
     $galleryNow = [];
@@ -103,9 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   $galleryJSON = mysqli_real_escape_string($conn, json_encode($galleryNow, JSON_UNESCAPED_SLASHES));
 
-  // ======================
   // UPDATE DATABASE (NO PREPARE)
-  // ======================
   $updateQuery = "
         UPDATE portfolios SET
             judul='$judul',
@@ -123,7 +107,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     echo "<script>
             alert('✅ Portofolio berhasil diperbarui!');
-            window.location.href='detail_hasil.php?id=$id';
+            window.location.href='hasil.php?id=$id';
         </script>";
     exit;
   } else {
@@ -131,7 +115,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   }
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="id">
@@ -143,7 +126,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-
   <script src="https://cdn.jsdelivr.net/npm/tinymce@6/tinymce.min.js"></script>
   <script>
     tinymce.init({
